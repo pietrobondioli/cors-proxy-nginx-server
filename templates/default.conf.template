@@ -1,0 +1,20 @@
+server {
+    listen 80;
+    error_log  /var/log/nginx/error.log warn;
+    access_log /var/log/nginx/access.log main;
+
+    location / {
+        rewrite /(.*) /$1 break;
+        proxy_pass $PROXY_HOST;
+
+        if ($request_method = 'OPTIONS') {
+            return 204;
+        }
+
+        add_header 'Access-Control-Max-Age' 1728000;
+        add_header 'Access-Control-Allow-Headers' 'Authorization,Accept,Origin,DNT,X-CustomHeader,Keep-Alive,User-Agent,
+        X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range';
+        add_header 'Access-Control-Allow-Methods' 'GET,POST,OPTIONS,PUT,DELETE,PATCH';
+        add_header 'Access-Control-Expose-Headers' 'Content-Disposition';
+    }
+}

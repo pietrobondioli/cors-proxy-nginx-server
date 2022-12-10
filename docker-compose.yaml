@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  cors_proxy:
+    container_name: cors_proxy
+    image: nginx
+    env_file:
+      - .env
+    volumes:
+      - ./templates:/etc/nginx/templates
+    restart: on-failure
+    ports:
+      - "${EXPOSED_PORT}:80"
