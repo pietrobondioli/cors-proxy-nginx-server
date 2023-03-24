@@ -10,7 +10,7 @@ It was created to save time when developing a frontend application that needs to
 
 | Variable | Description |
 |----------|-------------|
-| `PROXY_HOST` | The host to proxy requests to |
+| `REMOTE_HOST` | The remote server to proxy requests to |
 | `EXPOSED_PORT` | The port to expose the proxy server on |
 
 *Important*: Before running the container, make sure that the variables is correctly set, it should be put on `.env` file at the root of the project (check `.env.sample`).
